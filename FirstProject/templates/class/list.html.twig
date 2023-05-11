@@ -1,0 +1,29 @@
+<p> {{st}} </p>
+
+<table border="3">
+    <tr>
+        <td>ref</td>
+        <td>titre</td>
+        <td>description</td>
+        <td>dateDebut</td>
+        <td>dateFIN</td>
+        <td>NbrPart</td>
+    </tr>
+    {% for i in fr %}
+    <tr>
+        {% if(i.Description == 'formation theorique') %}
+        <td>{{i.ref}}</td>
+        <td>{{i.Titre | upper }}</td>
+        <td>{{i.Description}}</td>
+        <td>{{i.date_debut}}</td>
+        <td>{{i.date_fin}}</td>
+        <td>{{i.nb_participants}}</td>
+        {% else %}
+        error
+        {% endif %}
+    </tr>
+
+    
+    {% endfor %}
+    <p>{{ fr | length }}</p>
+</table>
