@@ -1,0 +1,15 @@
+<table border="3">
+<tr>
+    <td>Id</td>
+    <td>Nom</td>
+    <td>Description</td>
+</tr>
+{% for c in cartwig %}
+<tr>
+    <td>{{ c.id }}</td>
+    <td>{{ c.nom }}</td>
+    <td>{{ c.description }}</td>
+    <td><form action="{{path('app_update',{'id':c.id})}}"><button type="submit" >update</button></form></td>
+</tr>
+{% endfor %}
+</table>

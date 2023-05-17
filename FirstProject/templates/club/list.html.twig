@@ -1,0 +1,36 @@
+
+ {# {{id}} #} 
+{% set maxvalue=0 %}
+{% for c in listeclub %}
+{% set maxvalue= max(c.nb_participants,maxvalue) %}
+{% endfor %}
+ <table border="3">
+    {% for i in listeclub  %}
+
+   {# {% if (i.Description == 'formation theorique')%} #}
+   {# {% if(i.nb_participants == maxvalue) %} #}
+    <tr>
+        <td>{{i.ref}}</td>
+        <td>{{i.Titre}}</td>
+        <td>{{i.Description}}</td>
+        <td>{{i.date_debut}}</td>
+        <td>{{i.date_fin}}</td>
+        <td>{{i.nb_participants}}</td>
+        {% if(i.nb_participants == 0) %}
+        <td><form action="{{path('app_listebyid',{'id':i.ref})}}"><button type="submit" >participer</button></form></td>
+        {% else %}
+        <td><button type="submit" disabled>participer</button></td>
+        {% endif %}
+    </tr>
+    {# {% endif %} #}
+    {# {% endif %} #}
+    {% endfor %}
+
+    </table>
+    <p>longeur de tab :{{ listeclub |length }}</p>
+    <img src="{{ asset('pull.jpg')}}">
+    {% set s=0 %}
+    {% for i in listeclub  %}
+    {% set s=s+i.nb_participants %}
+    {% endfor %}
+    <p> totel nbr part :{{s}}</p>
